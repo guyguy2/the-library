@@ -10,6 +10,9 @@ default_dirs:
     - global: ~/.claude/commands/
 
 library:
-  skills: []
+  skills:
+    - name: todoist
+      description: Manage Todoist tasks, projects, labels, and filters via the td CLI - add, complete, view, move tasks with natural-language support
+      source: /Users/guy/dev/ai-ml/tools/todoist/.claude/skills/todoist-cli/SKILL.md
   agents: []
   prompts: []
