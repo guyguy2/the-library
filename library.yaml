@@ -11,10 +11,6 @@ default_dirs:
 
 library:
   skills:
-    - name: harness
-      description: Meta-skill for designing and building a harness of specialized agents and skills for a domain or project - defines agent teams, assigns skills, and sets up automated workflows
-      source: https://github.com/revfactory/harness/blob/main/skills/harness/SKILL.md
-
     - name: gws
       description: Use when interacting with Gmail, Google Drive, Google Calendar, or any other Google Workspace service using the gws CLI - read/send email, list/search Drive files, create/query calendar events, check inbox, manage labels, upload files, reply to threads, or run cross-service workflows like standup reports, meeting prep, or weekly digests
       source: /Users/guy/dev/tools/tmp/gws/.claude/skills/gws/SKILL.md
