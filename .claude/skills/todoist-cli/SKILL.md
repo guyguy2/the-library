@@ -45,6 +45,11 @@ description: >
 - `td completion install` - Install shell completions
 - `td view <url>` - View supported Todoist entities/pages by URL
 - `td update` - Self-update the CLI to the latest version
+- `td changelog` - Show recent changelog entries
+- `td attachment view <url>` - View/download a file attachment by URL
+- `td auth login/token/status/logout` - Manage authentication
+- `td skill install/update/uninstall/list` - Manage coding agent skills
+- `td template export-file/export-url/create/import-file/import-id` - Manage project templates
 
 ## Output Formats
 
@@ -320,6 +325,43 @@ td view <url> --limit 25 --ndjson              # Passthrough list options where 
 ```bash
 td update                                    # Update CLI to latest version
 td update --check                            # Check for updates without installing
+```
+
+### Changelog
+```bash
+td changelog                                 # Show last 5 versions
+td changelog -n 10                           # Show last 10 versions
+```
+
+### Attachments
+```bash
+td attachment view <url>                     # View/download a file attachment by URL
+td attachment view <url> --json              # JSON output with metadata and content
+```
+
+### Auth
+```bash
+td auth login                                # Authenticate via OAuth
+td auth token <token>                        # Save API token directly
+td auth status                               # Show current auth status
+td auth logout                               # Remove saved token
+```
+
+### Skill (coding agent integrations)
+```bash
+td skill list                                # List supported agents and install status
+td skill install                             # Install skill for a coding agent
+td skill update                              # Update installed skill to latest version
+td skill uninstall                           # Uninstall skill for a coding agent
+```
+
+### Templates
+```bash
+td template export-file "Project Name"       # Export project as CSV template file
+td template export-url "Project Name"        # Export project as template URL
+td template create                           # Create new project from a template file
+td template import-file "Project Name"       # Import a template file into existing project
+td template import-id "Project Name"         # Import a template by ID into existing project
 ```
 
 ## Examples
