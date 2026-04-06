@@ -11,6 +11,10 @@ default_dirs:
 
 library:
   skills:
+    - name: obsidian-cli
+      description: Interact with Obsidian vaults using the Obsidian CLI to read, create, search, and manage notes, tasks, properties, and more. Also supports plugin and theme development. Use when the user asks to interact with their Obsidian vault, manage notes, search vault content, or develop Obsidian plugins.
+      source: https://github.com/kepano/obsidian-skills/blob/main/skills/obsidian-cli/SKILL.md
+
     - name: gws
       description: Use when interacting with Gmail, Google Drive, Google Calendar, or any other Google Workspace service using the gws CLI - read/send email, list/search Drive files, create/query calendar events, check inbox, manage labels, upload files, reply to threads, or run cross-service workflows like standup reports, meeting prep, or weekly digests
       source: /Users/guy/dev/tools/tmp/gws/.claude/skills/gws/SKILL.md
