@@ -31,4 +31,7 @@ library:
       description: Add items to a Walmart shopping cart using browser automation via AppleScript + Chrome JS injection. Use whenever the user wants to add groceries or products to their Walmart cart, do Walmart shopping, buy items on Walmart, or replenish supplies via Walmart.
       source: /Users/guy/dev/tools/claude-chrome-walmart/.claude/skills/walmart-cart/SKILL.md
   agents: []
-  prompts: []
+  prompts:
+    - name: fill-pdf
+      description: Fill a PDF form using the PDFiller library - inspects fields, loads user defaults, shows a fill plan, handles signatures, and saves the result
+      source: /Users/guy/dev/automation/python/pdfiller/.claude/commands/fill-pdf.md
