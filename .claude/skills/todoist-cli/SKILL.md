@@ -46,9 +46,11 @@ description: >
 - `td view <url>` - View supported Todoist entities/pages by URL
 - `td update` - Self-update the CLI to the latest version
 - `td changelog` - Show recent changelog entries
+- `td doctor` - Diagnose CLI setup and environment issues
 - `td attachment view <url>` - View/download a file attachment by URL
 - `td auth login/token/status/logout` - Manage authentication
-- `td skill install/update/uninstall/list` - Manage coding agent skills
+- `td backup list/download` - Manage backups
+- `td skill install/update/uninstall/list` - Manage coding agent skill integrations
 - `td template export-file/export-url/create/import-file/import-id` - Manage project templates
 
 ## Output Formats
@@ -330,7 +332,14 @@ td update --check                            # Check for updates without install
 ### Changelog
 ```bash
 td changelog                                 # Show last 5 versions
-td changelog -n 10                           # Show last 10 versions
+td changelog -n 10                           # Show last N versions
+```
+
+### Doctor
+```bash
+td doctor                                    # Diagnose setup and environment issues
+td doctor --json                             # JSON diagnostic output
+td doctor --offline                          # Skip network checks
 ```
 
 ### Attachments
@@ -347,21 +356,30 @@ td auth status                               # Show current auth status
 td auth logout                               # Remove saved token
 ```
 
+### Backup
+```bash
+td backup list                               # List available backups
+td backup list --json
+td backup download                           # Download latest backup
+td backup download "2024-01-15_12:00" --output-file backup.zip
+```
+
 ### Skill (coding agent integrations)
 ```bash
 td skill list                                # List supported agents and install status
-td skill install                             # Install skill for a coding agent
-td skill update                              # Update installed skill to latest version
-td skill uninstall                           # Uninstall skill for a coding agent
+td skill install                             # Install skill for current agent (auto-detected)
+td skill install claude-code                 # Install for specific agent
+td skill update                              # Update installed skill to latest
+td skill uninstall                           # Uninstall skill for current agent
 ```
 
-### Templates
+### Template
 ```bash
 td template export-file "Project Name"       # Export project as CSV template file
-td template export-url "Project Name"        # Export project as template URL
-td template create                           # Create new project from a template file
-td template import-file "Project Name"       # Import a template file into existing project
-td template import-id "Project Name"         # Import a template by ID into existing project
+td template export-url "Project Name"        # Export project as shareable template URL
+td template create                           # Create new project from template file
+td template import-file "Project Name"       # Import template CSV into existing project
+td template import-id "Project Name"         # Import template by ID into existing project
 ```
 
 ## Examples
