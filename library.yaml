@@ -15,6 +15,10 @@ library:
       description: Interact with Obsidian vaults using the Obsidian CLI to read, create, search, and manage notes, tasks, properties, and more. Also supports plugin and theme development. Use when the user asks to interact with their Obsidian vault, manage notes, search vault content, or develop Obsidian plugins.
       source: https://github.com/kepano/obsidian-skills/blob/main/skills/obsidian-cli/SKILL.md
 
+    - name: caveman
+      description: Ultra-compressed communication mode. Cuts token usage ~75% by speaking like caveman while keeping full technical accuracy. Supports intensity levels: lite, full (default), ultra, wenyan-lite, wenyan-full, wenyan-ultra. Use when the user says "caveman mode", "talk like caveman", "less tokens", or invokes /caveman.
+      source: /Users/guy/dev/ai/ai-tools/caveman/skills/caveman/SKILL.md
+
     - name: gws
       description: Use when interacting with Gmail, Google Drive, Google Calendar, or any other Google Workspace service using the gws CLI - read/send email, list/search Drive files, create/query calendar events, check inbox, manage labels, upload files, reply to threads, or run cross-service workflows like standup reports, meeting prep, or weekly digests
       source: /Users/guy/dev/tools/tmp/gws/.claude/skills/gws/SKILL.md
