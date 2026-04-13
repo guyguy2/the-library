@@ -75,7 +75,14 @@ For each installed entry that has a `requires` field:
 - If a dependency is not installed, pull it as well
 - Process dependencies before the items that require them
 
-### 6. Report Results
+### 6. Update State File
+After all re-pulls complete, record timestamps for every successfully refreshed item:
+- Read `<LIBRARY_SKILL_DIR>.library-state.yaml` if it exists, or start with an empty structure
+- For each successfully refreshed item, set its timestamp under its type key to the current datetime in ISO 8601 format (`YYYY-MM-DDTHH:MM:SS`)
+- Do not update timestamps for items that failed
+- Write the updated state back to `<LIBRARY_SKILL_DIR>.library-state.yaml`
+
+### 7. Report Results
 Display a summary table:
 
 ```

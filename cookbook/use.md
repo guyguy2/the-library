@@ -86,7 +86,25 @@ If the entry has a `requires` field:
 - Confirm the main file (SKILL.md, AGENT.md, or prompt file) exists in it
 - Report success with the installed path
 
-### 7. Confirm
+### 7. Update State File
+Record the sync timestamp for this item:
+- Read `<LIBRARY_SKILL_DIR>.library-state.yaml` if it exists, or start with an empty structure
+- Set the timestamp for this entry under its type key (e.g., `skills.gws`) to the current datetime in ISO 8601 format (`YYYY-MM-DDTHH:MM:SS`)
+- Write the updated state back to `<LIBRARY_SKILL_DIR>.library-state.yaml`
+
+Example state file format:
+```yaml
+# Auto-managed by /library. Do not edit manually.
+skills:
+  gws: "2026-04-13T14:27:00"
+  todoist: "2026-04-13T09:15:00"
+agents: {}
+prompts: {}
+```
+
+If the item had dependencies that were also installed, update their timestamps too.
+
+### 8. Confirm
 Tell the user:
 - What was installed and where
 - Any dependencies that were also installed
