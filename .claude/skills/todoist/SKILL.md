@@ -33,7 +33,13 @@ description: >
 - `td task add "content"` - Add a task
 - `td task list` - List tasks with filters
 - `td task complete <ref>` - Complete a task
+- `td task reschedule <ref> [date]` - Reschedule a task (preserves recurrence)
+- `td task quickadd|qa "text"` - Quick add via natural language (subcommand form of `td add`)
 - `td project list` - List projects
+- `td project archived` - List archived projects
+- `td project health <ref>` - Project health status and recommendations
+- `td project progress <ref>` - Project completion progress
+- `td project join <id>` - Join a shared project
 - `td label list` - List labels
 - `td filter list/view` - Manage and use saved filters
 - `td workspace list` - List workspaces
@@ -47,7 +53,7 @@ description: >
 - `td update` - Self-update the CLI to the latest version
 - `td changelog` - Show recent changelog entries
 - `td doctor` - Diagnose CLI setup and environment issues
-- `td attachment view <url>` - View/download a file attachment by URL
+- `td attachment view <url>` - View/download a file attachment
 - `td auth login/token/status/logout` - Manage authentication
 - `td backup list/download` - Manage backups
 - `td skill install/update/uninstall/list` - Manage coding agent skill integrations
@@ -74,6 +80,7 @@ Most list commands also support:
 - `--no-spinner` - Disable loading animations
 - `--progress-jsonl` - Machine-readable progress events (JSONL to stderr)
 - `-v, --verbose` - Verbose output to stderr (repeat: -v info, -vv detail, -vvv debug, -vvvv trace)
+- `-q, --quiet` - Suppress success messages (create commands still print the ID)
 - `--accessible` - Add text labels to color-coded output (due:/deadline:/~ prefixes, ★ for favorites). Also: `TD_ACCESSIBLE=1`
 
 ## References
@@ -128,8 +135,14 @@ td completed --project "Work"        # Filter by project
 ```bash
 td add "Buy milk tomorrow p1 #Shopping"   # Natural language quick-add
 td add "Call dentist next Monday #Health" # Date, project, priority parsed automatically
+
+# Also available as a task subcommand:
+td task quickadd "Buy milk tomorrow p1 #Shopping"   # Same as td add
+td task qa "Buy milk tomorrow p1 #Shopping"         # Alias
+td task quickadd --stdin                             # Read from stdin
+td task quickadd "Buy milk tomorrow" --dry-run       # Preview without creating
 ```
-Use `td add` when the user provides a natural-language task string. Use `td task add` (below) when constructing tasks programmatically with explicit flags — it's more reliable for agents.
+Use `td add` or `td task quickadd` when the user provides a natural-language task string. Use `td task add` (below) when constructing tasks programmatically with explicit flags — it's more reliable for agents.
 
 ### Task Management
 ```bash
@@ -177,6 +190,11 @@ td task move "task name" --parent "Parent task"
 td task move "task name" --no-parent          # Move to project root
 td task move "task name" --no-section         # Remove from section
 
+# Reschedule (preserves recurrence)
+td task reschedule "task name" "next Monday"
+td task reschedule id:123456 "2024-06-01"
+td task reschedule "task name" --dry-run      # Preview without executing
+
 # Delete and browse
 td task delete "task name" --yes
 td task browse "task name"                    # Open in browser
@@ -199,6 +217,19 @@ td project move "Project Name" --to-workspace "Acme" --folder "Engineering"
 td project move "Project Name" --to-workspace "Acme" --visibility team
 td project move "Project Name" --to-personal
 # move requires --yes to confirm (without it, shows a dry-run preview)
+
+td project archived                           # List archived projects
+td project archived-count                     # Count archived projects
+td project permissions "Project Name"         # Show permission mappings by role
+td project join <id>                          # Join a shared project by ID
+td project join <id> --dry-run               # Preview without joining
+td project progress "Project Name"            # Show completion progress
+td project progress "Project Name" --json
+td project health "Project Name"              # Show health status and recommendations
+td project health "Project Name" --json
+td project health-context "Project Name"      # Detailed metrics and task breakdown
+td project activity-stats "Project Name"      # Show activity statistics
+td project analyze-health "Project Name"      # Trigger new health analysis
 ```
 
 ### Labels
@@ -332,7 +363,7 @@ td update --check                            # Check for updates without install
 ### Changelog
 ```bash
 td changelog                                 # Show last 5 versions
-td changelog -n 10                           # Show last N versions
+td changelog --count 10                      # Show last N versions
 ```
 
 ### Doctor
@@ -344,8 +375,7 @@ td doctor --offline                          # Skip network checks
 
 ### Attachments
 ```bash
-td attachment view <url>                     # View/download a file attachment by URL
-td attachment view <url> --json              # JSON output with metadata and content
+td attachment view <url>                     # View or download a file attachment by URL
 ```
 
 ### Auth
