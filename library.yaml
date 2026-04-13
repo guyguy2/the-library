@@ -33,7 +33,7 @@ library:
 
     - name: walmart-cart
       description: Add items to a Walmart shopping cart using browser automation via AppleScript + Chrome JS injection. Use whenever the user wants to add groceries or products to their Walmart cart, do Walmart shopping, buy items on Walmart, or replenish supplies via Walmart.
-      source: /Users/guy/dev/tools/claude-chrome-walmart/.claude/skills/walmart-cart/SKILL.md
+      source: /Users/guy/dev/automation/claude-chrome-walmart/.claude/skills/walmart-cart/SKILL.md
   agents: []
   prompts:
     - name: fill-pdf
