@@ -11,6 +11,10 @@ default_dirs:
 
 library:
   skills:
+    - name: hyperframes
+      description: Create video compositions, animations, title cards, overlays, captions, voiceovers, audio-reactive visuals, and scene transitions in HyperFrames HTML. Use when building any HTML-based video content, adding captions synced to audio, generating TTS narration, creating audio-reactive animation, or adding scene transitions.
+      source: https://github.com/heygen-com/hyperframes/blob/main/skills/hyperframes/SKILL.md
+
     - name: obsidian-cli
       description: Interact with Obsidian vaults using the Obsidian CLI to read, create, search, and manage notes, tasks, properties, and more. Also supports plugin and theme development. Use when the user asks to interact with their Obsidian vault, manage notes, search vault content, or develop Obsidian plugins.
       source: https://github.com/kepano/obsidian-skills/blob/main/skills/obsidian-cli/SKILL.md
